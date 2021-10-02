@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
 
 int main() {
@@ -9,13 +9,13 @@ int main() {
 	cin >> b;
 	s = a * b;
 	d = 2 * (a + b);
-	if (a or b <= 0) {
-		cout << "The sides of the rectangle must be positive!" << "\n";
+	if (a and b > 0) {
+	    cout << "The area of the rectangle S = " << s << "\n";
+	    cout << "The perimeter of the rectangle P = " << d << "\n";
+		
 	}
 	else {
-		cout << "The area of the rectangle S = " << s << "\n";
-		cout << "The perimeter of the rectangle P = " << d << "\n";
+		cout << "The sides of the rectangle must be positive!" << "\n";
 	}
 	return 0;
 }
-
