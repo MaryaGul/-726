@@ -9,10 +9,9 @@ int main() {
 	cin >> b;
 	s = a * b;
 	d = 2 * (a + b);
-	if (a and b > 0) {
+	if (a >0 and b > 0) {
 	    cout << "The area of the rectangle S = " << s << "\n";
 	    cout << "The perimeter of the rectangle P = " << d << "\n";
-		
 	}
 	else {
 		cout << "The sides of the rectangle must be positive!" << "\n";
