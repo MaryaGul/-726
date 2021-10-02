@@ -7,11 +7,11 @@ int main() {
 	cin >> a;
 	cout << "Please enter a nonzero 2 number" << "\n";
 	cin >> b;
-	s = a * a + b * b;
-	r = a * a - b * b;
-	p = (a * a) * (b * b);
-	ch = (a * a) / (b * b);
 	if (a and b != 0) {
+		s = a * a + b * b;
+		r = a * a - b * b;
+		p = (a * a) * (b * b);
+		ch = (a * a) / (b * b);
 		cout << "Sum of squares of numbers s = " << s << "\n";
 		cout << "Difference of squares of numbersr = " << r << "\n";
 		cout << "Product of squares of numbersp = " << p << "\n";
