@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    float a, b, c, q, p;
+    cout<<"enter the value of the number A"<<endl;
+    cin >>a;
+    cout<<"enter the value of the number B"<<endl;
+    cin >>b;
+    cout<<"enter the value of the number C"<<endl;
+    cin >>c;
+    p = c;
+    q = a;
+    a = b;
+    c = q;
+    b = p;
+    cout<<"The content of variable A has been moved to variable C now C="<<c<<endl;
+    cout<<"The content of variable C has been moved to variable B now B="<<b<<endl;
+    cout<<"The content of variable B has been moved to variable A now A="<<a<<endl;
+    
+    return 0;
+}
