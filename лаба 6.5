@@ -1,0 +1,16 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+float fun(float x){
+    float y = 4*pow((x-3), 6)-7*pow((x-3), 3)+2;
+    return y;
+}
+
+int main(){
+    float x;
+    cout<<"enter the value of the number x"<<endl;
+    cin >>x;
+    cout<<"Function value y = 4*(x−3)^6-7*(x−3)^3 + 2  for a given x, y = "<<fun(x)<<endl;
+    return 0;
+}
