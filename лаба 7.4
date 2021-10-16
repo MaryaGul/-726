@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    float v1, v2, s1, s2, t;
+    cout<<"Enter the speed of 1 car(V1)"<<endl;
+    cin>>v1;
+    if (v1 <= 0){
+        cout<<"Speed must be positive!"<<endl;}
+    else {
+        cout<<"Enter the speed of 2 car(V2)"<<endl;
+        cin>>v2;
+        if (v2 <= 0){
+            cout<<"Speed must be positive!"<<endl; }
+        else{
+            cout<<"Enter the initial distance between them(S1)"<<endl;
+            cin>>s1;
+            if (s1 <= 0){
+                cout<<"Distance must be positive!"<<endl; }
+            else{
+                cout<<"Enter the number of hours(T)"<<endl;
+                cin>>t;
+                if (t <= 0){
+                    cout<<"Time must be positive!"<<endl; }
+            }
+                
+            }
+        }    
+       if (v1 > 0 and v2 > 0 and s1 > 0 and t > 0){
+                        s2 = s1+v1*t+v2*t;
+                        cout<<"Distance between cars in T hours S2 = "<<s2<<" km"<<endl;}
+    return 0;
+}
