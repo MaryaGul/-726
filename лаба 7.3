@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    float a, x, y, b, c;
+    cout<<"Enter the number of kilograms of candy(X)"<<endl;
+    cin>>x;
+    cout<<"Enter the cost of these kilograms of sweets(in rubles)"<<endl;
+    cin>>a;
+    cout<<"Enter the number of kilograms of sweets the price of which you want to know(Y)"<<endl;
+    cin>>y;
+    if (x > 0 and a > 0 and y > 0){
+        b = a/x;
+        c = b*y;
+        cout<<"1 kg of these sweets costs "<<b<<" rubles"<<endl;
+        cout<<"Y kg of these sweets costs "<<c<<" rubles"<<endl;
+    } else {
+        cout<<"Numbers indicating the price or quantity of candies must be positive!"<<endl;
+    }
+    return 0;
+}
