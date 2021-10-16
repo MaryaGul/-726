@@ -4,9 +4,13 @@ int main()
 {
     const double p = 3.1415926535;
     float a, r;
-    cout<<"Enter the angle values in degrees!"<<endl;
+    cout<<"Enter an angle value between 0 and 360 in degrees!"<<endl;
     cin>>a;
     r =p/180*a;
-    cout<<"This angle in radians r = "<<r<<endl;
+    if (a > 0 and a < 360){
+       cout<<"This angle in radians R = "<<r<<endl;
+    } else {
+        cout<<"The angle you entered is not within the specified limits (from 0 to 360)!"<<endl;
+    }       
     return 0;
 }
