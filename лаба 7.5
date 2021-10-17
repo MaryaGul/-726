@@ -1,0 +1,21 @@
+#include <iostream>
+#include<cmath>
+using namespace std;
+
+int main()
+{
+    float a, b, x;
+    cout<<"A*x + B = 0"<<endl;
+    cout<<"Enter coefficient A(not equal to 0)"<<endl;
+    cin>>a;
+    if (a == 0){
+        cout<<"A must not equal 0!"<<endl; }
+    else{
+        cout<<"Enter coefficient B"<<endl;
+        cin>>b;
+        x = (0 - b)/a;
+        cout<<"x = "<<round(x*10000)/10000 <<endl; 
+    }
+
+    return 0;
+}
