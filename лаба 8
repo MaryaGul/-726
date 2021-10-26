@@ -1,0 +1,101 @@
+#include <iostream>
+#include<cmath>
+using namespace std;
+
+int main()
+{
+    cout<<"Task 1"<<endl;
+    float b, kb;
+    cout<<"Enter the file size in bytes"<<endl;
+    cin>>b;
+    if (b<0){
+        cout<<"File size cannot be negative"<<endl;
+    } else{
+        kb = b/1024;
+        cout<<"the file size in kilobytes Kb = "<<ceil(kb)<<endl; }
+    
+    cout<<"  "<<endl;
+    cout<<"  "<<endl;
+    
+    cout<<"Task 2"<<endl;
+    int a, b2, k;
+    cout<<"Enter the lengths of the segments A and B (positive integers) so that A > B"<<endl;
+    cout<<"Enter A"<<endl;
+    cin>>a;
+    cout<<"Enter B"<<endl;
+    cin>>b2;
+    if (a <= 0 and b2 <=0){  
+        cout<<"the lengths of the segments A and B must be positive!"<<endl;
+    } else if (a < b2){
+        cout<<"The length of the segment A must be greater than the length of the segment B!"<<endl;
+    } else {
+        k = a/b2;
+        cout<<"The number of segments B placed on segment A is equal to "<<k<<endl;
+    }
+    
+    cout<<"  "<<endl;
+    cout<<"  "<<endl;
+    
+    cout<<"Task 3"<<endl;
+    int a3, b3, k3;
+    cout<<"Enter the lengths of the segments A and B (positive integers) so that A > B"<<endl;
+    cout<<"Enter A"<<endl;
+    cin>>a3;
+    cout<<"Enter B"<<endl;
+    cin>>b3;
+    if (a3 <= 0 and b3 <=0){  
+        cout<<"the lengths of the segments A and B must be positive!"<<endl;
+    } else if (a3 < b3){
+        cout<<"The length of the segment A must be greater than the length of the segment B!"<<endl;
+    } else {
+        k3 = a3-a3/b3*b3;
+        cout<<"The length of the unoccupied part of segment A is equal to "<<k3<<endl;
+    }
+    
+    cout<<"  "<<endl;
+    cout<<"  "<<endl;
+    
+    cout<<"Task 4"<<endl;
+    int x, y, i, z, k4;
+    i = 0;
+    cout<<"Please enter a two-digit integer"<<endl;
+    cin>>x;
+    k4 = x;
+    while (x != 0){
+        x = x / 10;
+        i++;
+    }
+    if (i != 2){  
+        cout<<"The number must be two-digit!"<<endl;
+    } else {
+        y = k4 % 10;
+        z = abs(k4 / 10);
+        cout<<"The number obtained by rearranging the digits of the original number is "<<y<<z<<endl;
+    }
+    
+    cout<<"  "<<endl;
+    cout<<"  "<<endl;
+    
+    cout<<"Task 5"<<endl;
+    int x5, y5, i5, z5, k5;
+    i5 = 0;
+    cout<<"Please enter a three-digit integer number "<<endl;
+    cin>>x5;
+    k5 = x5;
+    while (x5 != 0){
+        x5 = x5 / 10;
+        i5++;
+    }
+    if (i5 != 3 ){  
+        cout<<"The number must be three-digit!"<<endl;
+    } else {
+        y5 = k5 % 100;
+        z5 = abs(k5 / 100);
+        cout<<"In this number, the first digit on the left was crossed out and assigned to the right, the result is "<<y5<<z5<<endl;
+    }
+    
+    
+    
+    
+    return 0;
+}
