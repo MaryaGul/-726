@@ -1,0 +1,95 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    cout<<"Task 1"<<endl;
+    int n, nm;
+    cout<<"Enter how many seconds have passed since the beginning of the last day (integer)"<<endl;
+    cin>>n;
+    if ( n >= 86400){
+        cout<<"You entered a number of seconds that is greater than the number of seconds in a day!"<<endl;
+    } else if (n < 0 ) {
+        cout<<"The number of seconds cannot be negative!"<<endl;   
+    } else {
+        nm = n - 60*(n/60);
+        cout<<"first the last minute "<<nm<<" seconds have passed"<<endl;
+    }
+    
+    cout<<" "<<endl;
+    cout<<" "<<endl;
+    
+    cout<<"Task 2"<<endl;
+    int k, nk;
+    cout<<"Enter any tar of the year (1-365) (integer)"<<endl;
+    cin>>k;
+    if ( k > 365 or k < 1){
+        cout<<"In a non-leap year, there are no more than 365 days and less than one day!"<<endl;
+    } else {
+        nk = k - 7*(k/7);
+        cout<<"day of the week for the K-th day of the year is "<<nk<<endl;
+    }
+    
+    cout<<" "<<endl;
+    cout<<" "<<endl;
+    
+    cout<<"Task 3"<<endl;
+    int k3, n3, nk3;
+    cout<<"Monday - 1, Tuesday - 2, Wednesday - 3, Thursday - 4, Friday - 5, Saturday - 6, Sunday - 7"<<endl;
+    cout<<"Enter any tar of the year (1-365) (integer) (k)"<<endl;
+    cin>>k3;
+    cout<<"Enter a number that will represent the day of the week on January 1 of any year (1-7) (N)"<<endl;
+    cin>>n3;
+    if ( k3 > 365 or k3 < 1){
+        cout<<"In a non-leap year, there are no more than 365 days and less than one day!"<<endl;
+    } else if ( n3 < 1 or n3 > 7){
+        cout<<"The entered number is not in the specified range (1-7)!"<<endl;
+    } else {
+        nk3 = k3 - 7*(k3/7)+(n3-1);
+        if (nk3 > 7){
+            cout<<"day of the week for the K-th day of the year is "<<nk3-7<<endl;    
+        } else{
+            cout<<"day of the week for the K-th day of the year is "<<nk3<<endl; 
+        }
+        
+    }
+    
+    cout<<" "<<endl;
+    cout<<" "<<endl;
+    
+    cout << "Task 4" << endl;
+    int a, b, c, kl, s;
+    cout <<"A rectangle of size A * B contains the maximum possible number of squares with side C"<< endl;
+    cout << "Enter A>0 (integer)" << endl;
+    cin >> a;
+    cout << "Enter B>0 (integer)" << endl;
+    cin >> b;
+    cout << "Enter C>0 (integer)" << endl;
+    cin >> c;
+    if (a < 0 or b < 0 or c < 0){
+       cout << "Numbers must be positive!" << endl;
+    } else if (a < c or b < c) {
+       cout << "A square with side C extends beyond rectangle A * B!" << endl;
+    } else  {
+      kl = (a / c) * ( b / c);
+      s = a * b - kl*c*c;
+      cout<<"The number of squares placed on the rectangle is "<<kl<<endl;
+      cout<<"Unoccupied area of the rectangle is "<<s<<endl;
+    }
+    
+    cout<<" "<<endl;
+    cout<<" "<<endl;
+    
+    cout << "Task 5" << endl;
+    int g, st;
+    cout <<"Enter some year number (positive integer)"<< endl;
+    cin >> g;
+    if (g < 0){
+      cout << "Year numbers must be positive!" << endl;
+    } else  {
+      st = g/100 + 1;
+      cout<<"Corresponding century numbers is "<<st<<endl;
+     }
+     
+     
+    return 0;
+}
