@@ -1,0 +1,142 @@
+#include <iostream>
+using namespace std;
+#include<cmath>
+int main()
+{
+    cout<<"task 1"<<endl;
+    int a, b;
+    cout<<"Enter ineger number A"<<endl;
+    cin>>a;
+    cout<<"Enter integer number B"<<endl;
+    cin>>b;
+    if (a> 2 and b <= 3){
+        cout<<"The statement “The inequalities A> 2 and B ≤ 3 are true” is true"<<endl;
+    } else {
+        cout<<"The statement “The inequalities A> 2 and B ≤ 3 are true” is false"<<endl;
+    }    
+  
+    cout<<""<<endl;
+    cout<<""<<endl;
+  
+    cout<<"task 2"<<endl;
+    int a2, b2, c2;
+    cout<<"Enter ineger number A"<<endl;
+    cin>>a2;
+    cout<<"Enter integer number B"<<endl;
+    cin>>b2;
+    cout<<"Enter integer number C"<<endl;
+    cin>>c2;
+    if (a2 < b2 and b2 < c2 ){
+        cout<<"The statement “The double inequality A < B < C are true” is true"<<endl;
+    } else {
+        cout<<"The statement “The double inequality A <B <C are true” is false"<<endl;
+    } 
+  
+    cout<<""<<endl;
+    cout<<""<<endl;
+    
+    
+    cout<<"task 3"<<endl;
+    int a3, i, g;
+    cout<<"Enter ineger number"<<endl;
+    cin>>a3;
+    i = 0;
+    g = a3;
+    while (a3 != 0){
+        a3 = a3/10;
+        i++;
+    }
+    if (i == 2 and g % 2 == 0){
+        cout<<"The statement 'This number is an even two-digit number' is true"<<endl;
+    } else {
+        cout<<"The statement 'This number is an even two-digit number' is false"<<endl;
+    } 
+  
+    cout<<""<<endl;
+    cout<<""<<endl;
+    
+    cout<<"task 4"<<endl;
+    int a4, i4, g4;
+    cout<<"Enter ineger three-digit number"<<endl;
+    cin>>a4;
+    i4 = 0;
+    g4 = a4;
+    while (a4 != 0){
+        a4 = a4/10;
+        i4++;
+    }
+    if (i4 != 3 ){
+        cout<<"This number is not three-digit!"<<endl;
+    } else if ( ((g4%10) > (g4%100/10) and (g4%100/10) > (g4/100)) or ((g4%10) < (g4%100/10) and (g4%100/10) < (g4/100)) ) {
+        cout<<"The saying 'The numbers of a given number form an increasing or decreasing sequence' is true"<<endl;
+    } else {
+        cout<<"The saying 'The numbers of a given number form an increasing or decreasing sequence' is false"<<endl;
+    }
+
+    cout<<""<<endl;
+    cout<<""<<endl; 
+    
+    cout<<"task 5"<<endl;
+    int a5, i5, g5;
+    cout<<"Enter ineger four-digit number"<<endl;
+    cin>>a5;
+    i5 = 0;
+    g5 = a5;
+    while (a5 != 0){
+        a5 = a5/10;
+        i5++;
+    }
+    if (i5 != 4 ){
+        cout<<"This number is not four-digit!"<<endl;
+    } else if ( ((g5%10) == (g5/1000)) and ((g5%100/10) == (g5/100%10)) ) {
+        cout<<"The statement 'The given number is read the same from left to right and from right to left' is true"<<endl;
+    } else {
+        cout<<"The statement 'The given number is read the same from left to right and from right to left' is false"<<endl;
+    }
+    
+    cout<<""<<endl;
+    cout<<""<<endl; 
+    
+    cout<<"task 6"<<endl;
+    int a6, b6, c6;
+    cout<<"Given integers a, b, c, which are sides of some triangle"<<endl;
+    cout<<"Enter ineger number a"<<endl;
+    cin>>a6;
+    cout<<"Enter ineger number b"<<endl;
+    cin>>b6;
+    cout<<"Enter ineger number c"<<endl;
+    cin>>c6;
+    if (a6 <= 0 or b6 <= 0 or c6 <= 0 ){
+        cout<<"The sides of the triangle must be positive!"<<endl;
+    } else if ((a6+b6<c6) or (a6+c6<b6) or (b6+c6<a6)  ) {
+        cout<<"There is no triangle with such sides"<<endl;
+    } else if ( pow(c6, 2)+pow(a6, 2) == pow(b6, 2) or  pow(b6, 2)+pow(a6, 2) == pow(c6, 2) or  pow(c6, 2)+pow(b6, 2) == pow(a6, 2) ){
+        cout<<"The statement 'A triangle with sides a, b, c is rectangular' is true"<<endl;
+    } else {
+        cout<<"The statement 'A triangle with sides a, b, c is rectangular' is false"<<endl;
+    }
+    
+    cout<<""<<endl;
+    cout<<""<<endl;
+    
+    cout<<"task 7"<<endl;
+    int a7, b7, c7;
+    cout<<"Given integers a, b, c, which are sides of some triangle"<<endl;
+    cout<<"Enter ineger number a"<<endl;
+    cin>>a7;
+    cout<<"Enter ineger number b"<<endl;
+    cin>>b7;
+    cout<<"Enter ineger number c"<<endl;
+    cin>>c7;
+    if (a7 <= 0 or b7 <= 0 or c7 <= 0 ){
+        cout<<"The sides of the triangle must be positive!"<<endl;
+    } else if ((a7+b7<c7) or (a7+c7<b7) or (b7+c7<a7)  ) {
+        cout<<"The statement 'There is a triangle with sides a, b, c' is false"<<endl;
+    } else{
+         cout<<"The statement 'There is a triangle with sides a, b, c' is true"<<endl;
+    }
+    
+    return 0;
+}
+
+
