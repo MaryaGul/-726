@@ -1,0 +1,152 @@
+#include <iostream>
+#include<cmath>
+using namespace std;
+
+int main()
+{
+    cout<<"Task 1"<<endl;
+    int a, b;
+    cout<<"Enter integer number A"<<endl;
+    cin>>a;
+    cout<<"Enter integer number B"<<endl;
+    cin>>b;
+    if (a != b){
+        a = max(a, b);
+        b = max(a, b);
+        cout<<"Now A is "<<a<<endl;
+        cout<<"Now B is "<<b<<endl;
+    } else {
+        a = 0;
+        b = 0;
+        cout<<"Now A is "<<a<<endl;
+        cout<<"Now B is "<<b<<endl;
+    }
+    
+    cout<<endl;
+    cout<<endl;
+    
+    cout<<"Task 2"<<endl;
+    float a2, b2, c2, q;
+    cout<<"Enter  number A"<<endl;
+    cin>>a2;
+    cout<<"Enter number B"<<endl;
+    cin>>b2;
+    cout<<"Enter number C"<<endl;
+    cin>>c2;
+    float arr[3]= {a2, b2, c2}, max2 = arr[0], min2 = arr[0];
+    for (int i = 0; i < 3; i++){
+        if (max2 < arr[i]){
+            max2 = arr[i];
+        }
+    }
+    for (int i = 0; i < 3; i++){
+        if (min2 > arr[i]){
+            min2 = arr[i];
+        }
+    }
+    
+    if (a2 > min2 and a2 <= max2){
+        q = a2 + max2;
+        cout<<"The sum of the two largest numbers of these numbers is "<<q<<endl;
+    } else if (b2 > min2 and b2 <= max2){
+        q = b2 + max2;
+        cout<<"The sum of the two largest numbers of these numbers is "<<q<<endl;
+    } else if (c2 > min2 and c2 <= max2){
+        q = c2 + max2;
+        cout<<"The sum of the two largest numbers of these numbers is "<<q<<endl;
+    } else if (a2 == b2 and a2 == c2 and b2 ==c2){
+        q=a2+b2;
+        cout<<"The sum of the two largest numbers of these numbers is "<<q<<endl;
+    }
+    
+    
+    cout<<endl;
+    cout<<endl;
+    
+    cout<<"Task 3"<<endl;
+    float xa, ya, xb, yb, xc, yc, ab, ac;
+    cout<<"Enter the coordinates of point A(x, y)"<<endl;
+    cin>>xa>>ya;
+    cout<<"Enter the coordinates of point B(x, y)"<<endl;
+    cin>>xb>>yb;
+    cout<<"Enter the coordinates of point C(x, y)"<<endl;
+    cin>>xc>>yc;
+    ab = sqrt(pow((xb -xa), 2)+pow((yb-ya), 2));
+    ac = sqrt(pow((xc -xa), 2)+pow((yc-ya), 2));
+
+    if (ab < ac){
+        cout<<"Point B is located closer to point A (than C), the distance of point B from point A is "<<ab<<endl;
+    } else {
+        cout<<"Point C is located closer to point A (than B), the distance of point B from point A is "<<ac<<endl;
+    }
+    
+    cout<<endl;
+    cout<<endl;
+    
+    cout<<"Task 4"<<endl;
+    float x4, y4;
+    cout<<"Enter the coordinates of point(x, y), which does not lie on the axes OX and OY"<<endl;
+    cin>>x4>>y4;
+    if ( x4==0 or y4 == 0){
+        cout<<"the point must not lie on the axes!"<<endl;
+    } else if (x4 > 0 and y4 > 0) {
+        cout<<"This point is in 1 coordinate quarter"<<endl;
+    } else if (x4<0 and y4>0){
+        cout<<"This point is in 2 coordinate quarter"<<endl;
+    } else if (x4<0 and y4<0){
+        cout<<"This point is in 3 coordinate quarter"<<endl;
+    } else if (x4>0 and y4<0){
+        cout<<"This point is in 4 coordinate quarter"<<endl;
+    }
+    
+    cout<<endl;
+    cout<<endl;
+    
+    cout<<"Task 5"<<endl;
+    int num;
+    cout<<"Enter integer number"<<endl;
+    cin>>num;
+    if ( num == 0){
+        cout<<"This number is zero"<<endl;
+    } else if (num > 0 and num % 2 == 0) {
+        cout<<"This is a positive even number"<<endl;
+    } else if (num > 0 and num % 2 != 0){
+        cout<<"This is a positive odd number"<<endl;
+    } else if (num < 0 and num % 2 == 0){
+        cout<<"This is a negative even number"<<endl;
+    } else if (num < 0 and num % 2 != 0){
+        cout<<"This is a negative odd number"<<endl;
+    }
+    
+    cout<<endl;
+    cout<<endl;
+    
+    
+    cout<<"Task 6"<<endl;
+    int num6, q6, i = 0;
+    cout<<"Enter integer number(1-999)"<<endl;
+    cin>>q6;
+    num6 = q6;
+    while (q6 != 0){
+        q6 = q6 / 10;
+        i++;
+    }
+    if ( num6 <= 0 or num6 > 999){
+        cout<<"The number must be in the range from 1 to 999!"<<endl;
+    } else if (i == 1 and num6 % 2 == 0) {
+        cout<<"This is an even single-digit number"<<endl;
+    } else if (i == 1 and num6 % 2 != 0){
+        cout<<"This is an odd single-digit number"<<endl;
+    } else if (i == 2 and num6 % 2 == 0){
+        cout<<"This is an even two-digit number"<<endl;
+    } else if (i == 2 and num6 % 2 != 0){
+        cout<<"This is an odd two-digit number"<<endl;
+    } else if (i == 3 and num6 % 2 == 0){
+        cout<<"This is an even three-digit number"<<endl;
+    } else if (i == 3 and num6 % 2 != 0){
+        cout<<"This is an odd three-digit number"<<endl;
+    } 
+    
+    
+    return 0;
+}
