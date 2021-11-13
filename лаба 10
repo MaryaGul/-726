@@ -131,9 +131,9 @@ int main()
     if (a7 <= 0 or b7 <= 0 or c7 <= 0 ){
         cout<<"The sides of the triangle must be positive!"<<endl;
     } else if ((a7+b7<c7) or (a7+c7<b7) or (b7+c7<a7)  ) {
-        cout<<"The statement 'There is a triangle with sides a, b, c' is true"<<endl;
+        cout<<"The statement 'There is a triangle with sides a, b, c' is false"<<endl;
     } else{
-         cout<<"The statement 'There is a triangle with sides a, b, c' is false"<<endl;
+         cout<<"The statement 'There is a triangle with sides a, b, c' is true"<<endl;
     }
     
     return 0;
