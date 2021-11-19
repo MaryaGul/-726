@@ -1,0 +1,137 @@
+#include<iostream>
+#include<cmath>
+#include <string>
+using namespace std;
+ 
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    cout<<"Task 1"<<endl;
+    string num[] = {"the first", "the second", "the third", "the fourth", 
+    "the fifth", "the sixth", "the seventh", "the eighth", "the ninth", "the tenth",
+    "the eleventh", "the twelfth", "the thirteenth",    "the fourteenth", "the fifteenth", "the sixteenth", "the seventeenth", "the eighteenth",
+    "the nineteenth", "the twentieth", "the twenty-first", "the twenty-second", "the twenty-third", "the twenty-fourth", "the twenty-fifth" ,"the twenty-sixth",
+    "the twenty-seventh", "the twenty-eighth" , "the twenty-ninth", "the thirtieth", "the thirty-first"};
+    
+    string mon[] = { "of January",   "of February",   "of March",   "of April",   "of May",  "of June",
+    "of July",   "of August",  "of September",   "of October",  "of November",   "of December" };
+    int a, b;
+    cout<<"Enter any date (Day and month only)"<<endl;
+    cout<<"Enter the day of the month (number 1-31):"<<endl;
+    cin>>a;
+    cout<<"Enter the number of the month(1-January, 2 - February...)"<<endl;
+    cin>>b;
+    if (a < 1 or a > 31){
+        cout<<"There is no such date in a month!"<<endl;
+    } else if ( b < 1 or b > 12){
+       cout<<"There is no such number of year!"<<endl; 
+    } else if ((a > 30 and b == 4) or (a > 30 and b == 6) or (a > 30 and b == 9)  or (a > 30 and b == 11)  or (a > 28 and b == 2 )){
+       cout<<"There is no such date in this month!"<<endl;
+    } else {
+        cout<<"This date is "<<num[a-1]<<" "<<mon[b-1]<<endl;
+    }
+    
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    
+    cout<<"Task 2"<<endl;
+    int com;
+    cout<<" The robot can move in four directions ('N' - north, 'W' - west, 'S' - south, 'B' - east)"<<endl;
+    cout<<"and receive three digital commands: 0 - continue moving, 1 - turn left, −1 - right turn"<<endl;
+    cout<<"C - the original direction of the robot"<<endl;
+    cout<<"Enter the number of command(1, -1, 0)"<<endl;
+    cin>>com;
+    
+    switch(com){
+        
+    case 0:
+        cout<<"The direction of the robot is C (north)"<<endl;
+        break;
+    case 1:
+        cout<<"The direction of the robot is Z (west)"<<endl;
+        break;
+    case -1:
+        cout<<"The direction of the robot is B (East)"<<endl;
+        break;
+    default:
+        cout<<"There is no such command!"<<endl;
+        break;
+    }
+    
+    
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    
+    
+    cout << "Задание 3" << endl;
+    string numm[] = {"Десять", "Одиннадцать", "Двендацать", "тринадцать четырнадцать", "пятнадцать", "шестнадцать", "семнадцать", "восемнадцать",
+    "девятнадцать", "двадцать",  "двадцать одно", "двадцать два",  "двадцать три",    "двадцать четыре", "двадцать пять",
+    "двадцать шесть",  "двадцать семь", "двадцать восемь", "двадцать девять", "тридцать", "тридцать одно",
+    "тридцать два", "тридцать три", "тридцать четыре", "тридцать пять", "тридцать шесть", "тридцать семь",
+    "тридцать восемь", "тридцать девять", "сорок"};   
+    int col;
+    cout<<"Введите число от 10 до 40, которе будет обозначать кол-во учебных заданий"<<endl;
+    cin>>col;
+    if (col<10 or col > 40){
+        cout<<"Это число не входит в заданный диапазон!"<<endl;
+    } else if (col == 21 or col == 31){
+        cout<<numm[col - 11]<<" учебное задание"<<endl;
+    } else if ((col > 21 and col < 25) or (col > 32 and col < 35)){
+        cout<<numm[col - 11]<<" Учебных задания"<<endl;
+    } else{
+        cout<<numm[col-11]<<" учебных заданий"<<endl;
+    }
+    
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    
+    cout<<"Задание 4"<<endl;
+    int ch, k;
+    cout<<"Введите целое число в диапазоне 100-999"<<endl;
+    cin>>ch;
+    string sot[] = {"сто", "двести", "тристо",  "четыресто", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот"};
+    string des[] = {"двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", "восемьдесят", "девяносто"};
+    string ed[] = {"один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь","девять"};
+    string desd[] = {"одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать", "шестнадцать", "сменадцать", "восемьнадцать",
+    "девятьнадцать"};
+     k = (ch / 10)%10;
+    if (ch<100 or ch > 999){
+        cout<<"Это число не входит в заданный диапазон!"<<endl;
+    } else if (k == 1 ){
+        cout<<sot[(ch/100)-1]<<" "<<desd[ch%10-1]<<endl;
+    } else if (k == 0 and ch %10 == 0) {
+        cout<<sot[(ch/100)-1]<<endl;
+    } else if (k == 0 ){
+        cout<<sot[(ch/100)-1]<<" "<<ed[ch%10-1]<<endl;
+    } else{
+        cout<<sot[(ch/100)-1]<<" "<<des[k - 2]<<" "<<ed[ch%10-1]<<endl;
+    }
+    
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    
+    cout << "Задание 5" << endl;
+    string clrm[] = { "зеленого", "зеленого", "красного", "красного", "желтого", "желтого", "белого", "белого", "черного",
+    "черного", "зеленого", "зеленого"};
+    string clrg[] = { "зеленой", "зеленой", "красной", "красной", "желтой", "желтой", "белой", "белой", "черной",
+    "черной", "зеленой", "зеленой"};
+    string zoo[] = {"крысы", "коровы", "тигра", "зайца", "дракона", "змеи", 
+    "лошади", "овцы", "обезьяны", "курицы", "собаки", "свиньи"};
+    int yr, q;
+    cout<<"Введите номер года:"<<endl;
+    cin>>yr;
+    q = yr - 1984;
+    if (yr <= 0){
+        cout<<"Год должен быть чисолом положительным!"<<endl;
+    }  else if (q  == 0 or q == 1 or q == 5 or q == 6 or q == 7 or q == 8 or q == 9 or q ==10 or q ==11 ){
+      cout<<"Это год "<<clrg[yr - 1984]<<" "<<zoo[yr-1984]<<endl;
+    }  else {
+        cout<<"Это год "<<clrm[yr - 1984]<<" "<<zoo[yr-1984]<<endl;
+    }
+    
+    return 0;
+}
