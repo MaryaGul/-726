@@ -1,0 +1,122 @@
+#include <iostream>
+#include<cmath>
+using namespace std;
+int main()
+{
+    setlocale( LC_ALL, "ru");
+    cout<<"Task 1"<<endl;
+    int a, b, g;
+    cout<<"Enter integer positive number A"<<endl;
+    cin>>a;
+    cout<<"Enter integer positive number B (A < B)"<<endl;
+    cin>>b;
+    cout<<endl;
+    if (a<=0 or b <= 0){
+        cout<<"Numbers must be positive!"<<endl;
+    } else if (a >= b){
+        cout<<"B must be bigger than A! (A<B)"<<endl;
+    } else {
+    g = a-1;
+    for(int i = 0; i<=b-a; i++){
+        g++;
+        for(int n=0; n<g; n++){
+            cout<<g<<endl;
+        }
+        cout<<endl;
+        }
+    }
+    
+    cout<<endl;
+    cout<<endl;
+    
+    cout<<"Task 2"<<endl;
+    float a2, b2, x;
+    cout<<"The segment of length A contains the maximum possible number of segments of length B (without overlaps)."<<endl;
+    cout<<"Enter positive number A"<<endl;
+    cin>>a2;
+    cout<<"Enter positive number B (A > B)"<<endl;
+    cin>>b2;
+    cout<<endl;
+    if (a2<=0 or b2 <= 0){
+        cout<<"Numbers must be positive!"<<endl;
+    } else if (a2 <= b2){
+        cout<<"A must be bigger than B! (A>B)"<<endl;
+    } else {
+    for (int i2 = 0; i2 <= a2-b2; i2++){
+        a2 -=b2;
+        if(a2-b2<0){
+            cout<<"the length of the unoccupied part of the segment A is "<<b2-fabs(a2-b2)<<endl;
+           }
+        }
+    }
+    
+    cout<<endl;
+    cout<<endl;
+    
+    cout<<"Task 3"<<endl;
+    float n, k=0, res=0;
+    cout<<"Enter integer number N (N>1)"<<endl;
+    cin>>n;
+    cout<<endl;
+    if (n<1){
+        cout<<"N must be bigger than 1(N>1)"<<endl;
+    } else {
+    for (int i = 0; i < n; i++){
+        k++;
+        res +=k;
+        if(res>=n){
+            cout<<"The smallest of the integers K for which the sum is 1 + 2 +. ... ... + K will be greater than or equal to N is "<<k<<endl;
+            cout<<"K is "<<res<<endl;
+            break;
+           }
+        }
+    }
+    
+    cout<<endl;
+    cout<<endl;
+    
+    cout<<"Task 4"<<endl;
+    double s=1000, p4, k4 = 0;
+    cout<<"Начальный вкладж в банке равен 1000 руб."<<endl;
+    cout<<"Через каждый месяц размер вклада увеличичвается на Р процентов от имееющейся суммы"<<endl;
+    cout<<"Введите этот процент Р - вещественное число(0 < Р < 25)"<<endl;
+    cin>>p4;
+    cout<<endl;
+    if (p4 < 0 or p4 > 25 ){
+        cout<<"Процент р должен лежать в диапазоне от 0 до 25!"<<endl;
+    } else {
+        while (s <= 1100){
+            s = s*(1 + p4/100);
+            k4++;
+        }
+        cout<<"Размер вклада привысит 1100 руб через "<<k4<<" месяцев"<<endl;   
+        cout<<"Итоговый размер вклада равен "<<s<<endl;
+        
+    }
+    
+    cout<<endl;
+    cout<<endl;
+    
+    cout<<"Task 5"<<endl;
+    int a5, b5, x5, y5, n5, g5;
+    cout<<"Enter integer positive number A"<<endl;
+    cin>>a5;
+    cout<<"Enter integer positive number B "<<endl;
+    cin>>b5;
+    cout<<endl;
+    if (a5 <= 0 or b5 <= 0){
+        cout<<"Numbers must be positive!"<<endl;
+    } else {
+        x5 = min(a5, b5);
+        y5 = max(a5, b5);
+        while(y5%x5 != 0){
+            n5 = y5%x5;
+            g5 = x5;
+            x5 = min(n5, x5);
+            y5 = max(n5, g5);
+        }
+        cout<<"The greatest common divisor of these numbers is "<<x5<<endl;        
+        
+    }
+    return 0;
+}
