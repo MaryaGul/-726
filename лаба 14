@@ -46,6 +46,8 @@ int main()
         a2 -=b2;
         if(a2-b2<0){
             cout<<"the length of the unoccupied part of the segment A is "<<b2-fabs(a2-b2)<<endl;
+           } else if (a2-b2==0){
+            cout<<"the length of the unoccupied part of the segment A is "<<0<<endl;   
            }
         }
     }
@@ -54,18 +56,18 @@ int main()
     cout<<endl;
     
     cout<<"Task 3"<<endl;
-    float n, k=0, res=0;
+    float n3, k3=0, res=0;
     cout<<"Enter integer number N (N>1)"<<endl;
-    cin>>n;
+    cin>>n3;
     cout<<endl;
-    if (n<1){
+    if (n3<1){
         cout<<"N must be bigger than 1(N>1)"<<endl;
     } else {
-    for (int i = 0; i < n; i++){
-        k++;
-        res +=k;
-        if(res>=n){
-            cout<<"The smallest of the integers K for which the sum is 1 + 2 +. ... ... + K will be greater than or equal to N is "<<k<<endl;
+    for (int i = 0; i < n3; i++){
+        k3++;
+        res +=k3;
+        if(res>=n3){
+            cout<<"The smallest of the integers K for which the sum is 1 + 2 +. ... ... + K will be greater than or equal to N is "<<k3<<endl;
             cout<<"K is "<<res<<endl;
             break;
            }
@@ -117,6 +119,26 @@ int main()
         }
         cout<<"The greatest common divisor of these numbers is "<<x5<<endl;        
         
+    }
+    
+    cout<<endl;
+    cout<<endl;
+    
+    cout<<"Task 6"<<endl;
+    double n6, k6=2;
+    cout<<"Целое число N (> 1) является числом Фибоначчи: N = Fk"<<endl;
+    cout<<"Введите число N"<<endl;
+    cin>>n6;
+    cout<<endl;
+    if (n6 <= 1){
+        cout<<"N должно быть больше 1!"<<endl;
+    } else {
+        while (n6> 1){
+            n6 /= 1.619;
+            k6+=1;
+          
+        }
+        cout<<"Порядковый номер числа в последовательности Фибоначчи К = "<<k6<<endl;
     }
     return 0;
 }
