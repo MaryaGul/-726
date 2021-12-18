@@ -152,7 +152,7 @@ int main()
     cout<<endl;
     cout<<endl;
     
-    cout<<"Task 4"<<endl;
+    cout<<"Task 5"<<endl;
     int n;
     cout<<"N > 0 целое число"<<endl;
     cout<<"Введите N "<<endl;
