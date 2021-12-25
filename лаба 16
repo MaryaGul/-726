@@ -1,0 +1,144 @@
+#include<iostream>
+#include <cmath>
+using namespace std;
+int main(){
+  cout<<"Task 1"<<endl;
+  int t = 1;
+  cout<<"Enter integer number N > 0 "<<endl;
+  int n;
+  cin>>n;
+  int *arr1 = new int[n];
+  if (n<=0){
+  cout<<"N must be positive!"<<endl;
+  } else {
+  cout<<"The sequence of n first odd numbers is ";
+  for(int i = 0; i < n; i++){
+  arr1[i] = t;
+  cout<<arr1[i]<<" ";
+  t+=2;
+  }
+  }
+  delete [] arr1;
+
+  cout<<endl;
+  cout<<endl;
+
+  cout<<"Task 2"<<endl;
+  float a, d;
+  cout<<"Enter the first term of a geometric series(A)"<<endl;
+  cin>>a;
+  cout<<"Enter the denominator of the geometric progression(D)"<<endl;
+  cin>>d;
+  cout<<"Enter integer number N > 1"<<endl;
+  int n2, st = 0;
+  cin>>n2;
+  int *arr2 = new int[n2];
+  if (n2<=1){
+  cout<<"N must be > 1!"<<endl;
+  } else {
+  cout<<"The first N members of this progression are equal ";
+  for(int i = 0; i < n2; i++){
+  arr2[i] = a*pow(d, st);
+  cout<<arr2[i]<<", ";
+  st++;
+  }
+  }
+  delete [] arr2;
+  cout<<endl;
+  cout<<endl;
+
+  cout<<"Task 3"<<endl;
+  int a3, b3;
+  cout<<"Enter integer number A"<<endl;
+  cin>>a3;
+  cout<<"Enter integer number B"<<endl;
+  cin>>b3;
+  cout<<"Enter integer number N > 2"<<endl;
+  int n3, sum;
+  cin>>n3;
+  int *arr3 = new int[n3];
+  arr3[0]=a3;
+  arr3[1]=b3;
+  sum = arr3[0]+arr3[1];
+  if (n3<=2){
+  cout<<"N must be > 2!"<<endl;
+  } else {
+  cout<<"The first N elements of the array are equal ";
+  cout<<arr3[0]<<", "<<arr3[1]<<", ";
+  for(int i = 2; i < n3; i++){
+  arr3[i] = sum;
+  sum+=arr3[i];
+  cout<<arr3[i]<<", ";
+
+  }
+  }
+  delete [] arr3;
+
+  cout<<endl;
+  cout<<endl;
+
+  cout << "Task 4" << endl;
+  int a4, n4, h=0, ndr;
+  cout <<"Введите размер массива, который вы будете вводить" << endl;
+  cin>>n4;
+  if (n4<=0){
+  cout<<"Размер массива должен быть больше 0"<<endl;
+  } else {
+
+  ndr = n4;
+  int *arr4 = new int[n4];
+  cout << "Введите массив" << endl;
+  for (int i = 0; i < n4; i++) {
+  cin >> arr4[i];
+
+  }
+  cout<<"Элементы массива в следующем порядке: A1, AN , A2, AN−1, A3, AN−2... равны ";
+  for (int i = 0; i < n4/2; i++)
+  {
+  cout <<arr4[h]<< " "<<arr4[ndr-1]<<" ";
+  h++;
+  ndr--;
+
+  }
+  if (n4 % 2 != 0)
+  cout << arr4[n4 / 2] << endl;
+  delete [] arr4;
+  }
+
+  cout<<endl;
+  cout<<endl;
+  cout << "Task 5" << endl;
+    int a5, n5;
+    cout <<"Введите размер массива, который вы будете вводить" <<endl;
+    cin>>n5;
+    if (n5<=0){
+    cout<<"Размер массива должен быть больше 0"<<endl;
+    } else {
+    
+    int *arr5 = new int[n5];
+    cout <<"Введите массив" <<endl;
+    for (int i = 0; i < n5; i++) {
+    cin>> arr5[i];
+    
+    }
+    cout<<"Элементы с нечетными номерами в порядке возрастания номеров ";
+    for (int i = 1; i < n5; i+=2)
+    {
+    cout <<arr5[i]<< " ";
+ 
+    
+    }
+    cout<<endl;
+    cout<<"Элементы с четными номерами в порядке убывания номеров ";
+    for (int i = n5 - (n5 % 2); i >= 0; i -= 2)
+    {
+    cout <<arr5[i]<< " ";
+   
+    
+    }
+    delete[] arr5;
+    }
+  return 0;
+  }
+
+
