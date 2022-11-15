@@ -1,0 +1,172 @@
+#include <iostream>
+#include <vector>
+#include <fstream>
+using namespace std;
+
+
+//Структура ветки
+
+struct Node {
+
+int Data; //Поле данных
+Node* LeftNode; //УКАЗАТЕЛИ на соседние веточки
+Node* RightNode;
+
+};
+
+//Функция внесения данных
+
+void Add(int aData, Node*& aNode) {
+
+//Если ветки не существует
+
+if (!aNode) { //создадим ее и зададим в нее данные
+
+aNode = new Node;
+aNode->Data = aData;
+aNode->LeftNode = 0;
+aNode->RightNode = 0;
+
+return;
+
+} else //Иначе сверим вносимое
+
+if (aNode->Data > aData) { //Если оно меньше того, что в этой ветке - добавим влево
+    Add(aData, aNode->LeftNode);
+} else { //Иначе в ветку справа
+    Add(aData, aNode->RightNode);
+}
+
+};
+
+void pr_obh(Node*& aNode) {
+
+if (NULL == aNode) return; //Если дерева нет, выходим
+cout << aNode->Data << endl; //Посетили узел
+pr_obh(aNode->LeftNode); //Обошли левое поддерево
+pr_obh(aNode->RightNode); //Обошли правое поддерево
+}
+
+
+
+void add_elem(int aData, Node*& aNode) {
+    
+    if (!aNode) {
+    aNode = new Node;
+    aNode->Data = aData;
+    aNode->LeftNode = 0;
+    aNode->RightNode = 0;
+    return;
+    
+} else {
+
+    if (aData < aNode->Data) {
+        add_elem(aData, aNode->LeftNode);
+    
+    } else if (aData > aNode->Data) {
+        add_elem(aData, aNode->RightNode);
+        }
+    }
+}
+
+
+Node* del_elem(Node*& aNode, int aData) {
+
+    if (aNode == NULL)
+        return aNode;
+    if (aData == aNode->Data) {
+        Node* tmp;
+        if (aNode->RightNode == NULL)
+            tmp = aNode->LeftNode;
+        else {
+            Node* ptr = aNode->RightNode;
+            if (ptr->LeftNode == NULL) {
+            ptr->LeftNode = aNode->LeftNode;
+            tmp = ptr;
+            } else {
+            Node* pmin = ptr->LeftNode;
+            while (pmin->LeftNode != NULL) {
+            ptr = pmin;
+            pmin = ptr->LeftNode;
+            }
+            ptr->LeftNode = pmin->RightNode;
+            pmin->LeftNode = aNode->LeftNode;
+            pmin->RightNode = aNode->RightNode;
+            tmp = pmin;
+            }
+        }
+        delete aNode;
+        return tmp;
+    } else if (aData < aNode->Data)
+        aNode->LeftNode = del_elem(aNode->LeftNode, aData);
+    else
+        aNode->RightNode = del_elem(aNode->RightNode, aData);
+        return aNode;
+}
+
+bool exists(int value, Node*& node)	{
+    if (node == NULL) return false;
+    if (node->Data == value) return true;
+    if (value < node->Data) return exists(value, node->LeftNode);
+    return exists(value, node->RightNode);
+}
+
+void save(Node*& node)
+	{
+		ofstream of("File.txt", ofstream::app);
+
+		if (node == nullptr) return;
+
+		of << node->Data << " ";
+		of.close();
+
+		save(node->LeftNode);
+		save(node->RightNode);
+}
+
+
+
+int main()
+
+{
+
+setlocale(LC_ALL, "rus");
+vector<int> treeElements = { 8, 2, 20, 3, 1, 9, 20, 21, 89, 15, 28, 23, 63 };
+Node* Root = 0;
+int element;
+for (int i = 0; i < treeElements.size(); i++) {
+    Add(treeElements[i], Root);
+}
+int act;
+do
+	{
+		cout << "Какое действие сделать:\nДобавление - 1\nУдаление - 2\nОбход - 3\nПоиск - 4\nВыйти - 5\n";
+		cin >> act;
+		switch (act)
+		{
+		case 1:
+			cout << "Введите значение элемента: ";
+			cin >> element;
+			add_elem(element, Root);
+			break;
+		case 2:;
+			cout << "Введите элемент который хотите удалить: ";
+			cin >> element;
+			del_elem(Root, element);
+			break;
+		case 3:
+			pr_obh(Root);
+			cout << "\n";
+			break;
+		case 4:
+			cout << "Введите элемент который хотите найти: ";
+			cin >> element;
+			if(exists(element, Root) == false){cout<<"Элемента в дереве нет"<<endl;}
+			else cout<<"Элемент в дереве есть"<<endl;
+			break;
+		}
+	} while (act!=5);
+	save(Root);
+return 0;
+
+}
