@@ -1,0 +1,242 @@
+#include <iostream> 
+#include <string> 
+#include <fstream> 
+#include <sstream> 
+#include <windows.h> 
+ 
+using namespace std; 
+ 
+enum ConsoleColor 
+{ 
+ Black = 0, 
+ Blue = 1, 
+ Green = 2, 
+ Cyan = 3, 
+ Red = 4, 
+ Magenta = 5, 
+ Brown = 6, 
+ LightGray = 7, 
+ DarkGray = 8, 
+ LightBlue = 9, 
+ LightGreen = 10, 
+ LightCyan = 11, 
+ LightRed = 12, 
+ LightMagenta = 13, 
+ Yellow = 14, 
+ White = 15 
+}; 
+ 
+void set_color(ConsoleColor text, ConsoleColor background) 
+{ 
+ HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE); 
+ SetConsoleTextAttribute(hStdOut, (WORD)((background « 4) | text)); 
+} 
+ 
+struct t_Node{ 
+ int data; 
+ struct t_Node* left;  
+ struct t_Node* right; 
+ struct t_Node* parent; 
+  
+ t_Node(); 
+ t_Node(int _data) { 
+  data = _data; 
+  left = nullptr; 
+  right = nullptr; 
+  parent = nullptr; 
+ }; 
+  
+ void remove_node(t_Node* value){ 
+   
+  if (!value->left && !value->right){ 
+    if (value->parent->left && value->parent->left->data == value->data) 
+     value->parent->left = nullptr; 
+    else value->parent->right = nullptr; 
+    return delete value; 
+   } 
+  if (value->left && value->right){ 
+   // находим минимальный элемент в правом поддереве 
+   t_Node* current = value->right; 
+   while (current->left) 
+    current = current->left; 
+    
+   value->data = current->data; 
+   return remove_node(current); 
+  } 
+  if (value->left){ 
+   value->data = value->left->data; 
+   return remove_node(value->left); 
+  } 
+  else if (value->right){ 
+   value->data = value->right->data; 
+   return remove_node(value->right); 
+  } 
+ } 
+} typedef node; 
+ 
+void btree_preorder(node [id3212391|*root]); 
+void print(string message); 
+void print_data(node* current); 
+ 
+ 
+string concat_triple_str(string s1, string s2, string s3){ 
+ return s1 + s2 + s3; 
+} 
+class Tree{ 
+ node* root; 
+ public: 
+  Tree(): root(nullptr) {}; 
+  ~Tree() {} 
+   
+  void show(){ 
+   print("Binary tree: "); 
+   btree_preorder(root); 
+   print(""); 
+  } 
+   
+  void insert(int insert_data){ //вставка элемента 
+   node* current; 
+   if (root) current = root; 
+   else { 
+    root = new node(insert_data); 
+    return print(concat_triple_str("Insert [ " , to_string(insert_data) , " ] was succesfull!")); 
+   } 
+    
+   while (current){ 
+    if (current->data < insert_data){ 
+    if (current->right) 
+    current = current->right; 
+    else{ 
+     current->right = new node(insert_data); 
+     current->right->parent = current; 
+     return print(concat_triple_str("Insert [ " , to_string(insert_data) , " ] was succesfull!")); 
+     } 
+    
+    } 
+    else if (current->data > insert_data){ 
+    if (current->left) 
+    current = current->left; 
+    else { 
+     current->left = new node(insert_data); 
+     current->left->parent = current; 
+     return print(concat_triple_str("Insert [ " , to_string(insert_data) , " ] was succesfull!")); 
+     } 
+    } 
+    else 
+    return print(concat_triple_str("This element [ " , to_string(insert_data) , " ] already exists!")); 
+   }  
+  } 
+   
+  node* search(int search_data){ //поиск значения 
+   node* current; 
+   if (root) current = root; 
+   else { 
+    print("Binary Tree is Empty!"); 
+    return root; 
+   } 
+    
+   while (current){ 
+    if (current->data < search_data){ 
+    if (current->right) 
+    current = current->right; 
+    else{ 
+     print(concat_triple_str("This element [ " , to_string(search_data) , " ] was not found!")); 
+     return current->right; 
+     } 
+    
+    } 
+    else if (current->data > search_data){ 
+    if (current->left) 
+    current = current->left; 
+    else { 
+     print(concat_triple_str("This element [ " , to_string(search_data) , " ] was not found!")); 
+     return current->left; 
+     } 
+    } 
+    else{ 
+    print(concat_triple_str("This element [ " , to_string(search_data) , " ] was found!")); 
+    return current; 
+    } 
+   } 
+   print(concat_triple_str("This element [ " , to_string(search_data) , " ] was not found!")); 
+   return current; 
+  } 
+   
+  void remove(int delete_data){ 
+   node* value = search(delete_data);  
+   if (!value) return ; 
+   value->remove_node(value); 
+   print(concat_triple_str("Delete [ " , to_string(delete_data) , " ] was succesfull!")); 
+  }}; 
+   
+    
+void print(string message){ // информация для пользователя 
+ set_color(LightGreen, Black); 
+ cout « message « endl; 
+ set_color(White, Black); 
+} 
+void print_data(node* current) //функция вывода узла дерева на консоль и записи в файл 
+{ 
+ cout « current->data « " "; 
+ ofstream ifs("btree_output.txt", ios::app); 
+ ifs « current->data; 
+ ifs « " "; 
+ ifs.close(); 
+} 
+ 
+void btree_preorder(node [id3212391|*root]) //префиксный обход дерева int (*f)(node*) 
+{ 
+ print_data(root); 
+ if (root->left) 
+ btree_preorder(root->left); 
+ if (root->right) 
+ btree_preorder(root->right); 
+} 
+ 
+ 
+int main(){  
+ int change, data; 
+ Tree new_btree; 
+ do 
+ { 
+ cout « "-----------\nenter bintree[1], show bintree[2], insert new elenent[3], search data[4], delete[5], exit[0]\n-> "; 
+ cin » change; 
+ switch (change) 
+ { 
+ case 1:{ 
+  cin.sync(); 
+  cout « "enter bintree: "; 
+  string input_btree, item; 
+ getline(cin, input_btree); 
+ cout « input_btree « endl; 
+ stringstream ss(input_btree); 
+ while(getline(ss, item, ' ')) 
+ { 
+ new_btree.insert(atoi( item.c_str() )); 
+ }; 
+   break; 
+  } 
+ case 2: 
+ new_btree.show(); 
+ break; 
+ case 3: 
+ cout « "enter new element\n-> "; 
+ cin » data; 
+ new_btree.insert(data); 
+ cin.sync(); 
+ break; 
+ case 4: 
+ cout « "enter target value\n-> "; 
+ cin » data; 
+ new_btree.search(data); 
+ break; 
+ case 5: 
+ cout « "enter target value\n-> "; 
+ cin » data; 
+ new_btree.remove(data); 
+ break; 
+ default: 
+ break; 
+ } 
+ } while (change != 0); 
+}
