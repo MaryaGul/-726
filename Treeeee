@@ -1,0 +1,151 @@
+#include "pch.h"
+#include <iostream>
+#include <queue>
+#include <iomanip>
+using namespace std;
+
+class bin_node {
+public:
+    int data;
+    bin_node* left;
+    bin_node* right;
+};
+
+class bin_tree {
+private:
+    bin_node* top;
+public:
+    bin_tree()
+    {
+        top = NULL;
+    }
+
+    int get_depth(bin_node* root, int level)
+    {
+        if (root != NULL)
+        {
+            int l = get_depth(root->left, ++level);
+            int r = get_depth(root->right, level);
+            return l > r ? l : r;
+        }
+        return level;
+    }
+
+    void print()
+    {
+        queue<bin_node*> que;
+        que.push(top);
+        int cur_counter = 1;
+        bool flag = false;
+        int depth = get_depth(top, 0) - 1;
+        bin_node* cur;
+        int spaces = pow(2, depth - 1) * 4 - 2;
+        for (int i = 1; !que.empty();)
+        {
+            cur = que.front();
+            que.pop();
+            cout << setw((int)(spaces)) << "";
+            if (cur == NULL)
+            {
+                que.push(NULL);
+                que.push(NULL);    
+                cout << setw(4) << "";
+            }
+            else
+            {
+                flag = true;
+                cout << ' ' << setw(2) << cur->data << ' ';    
+                que.push(cur->left);
+                que.push(cur->right);
+            }
+            cout << setw((int)(spaces)) << "";
+            if (--cur_counter == 0)
+            {
+                if (!flag) break;
+                flag = false;
+                spaces = pow(2, depth - i - 1) * 4 - 2;
+                cur_counter = pow(2, i++);
+                cout << endl;
+            }
+        }
+    }
+
+    bin_node* search(int a)
+    {
+        bin_node *boof, *search;
+        if (top != NULL)
+        {
+            search = top;
+            boof = search;
+            while (search != NULL)
+            {
+                if (search->data < a)
+                {
+                    boof = search;
+                    search = search->right;
+                }
+                else if (search->data > a)
+                {
+                    boof = search;
+                    search = search->left;
+                }
+                else
+                {
+                    return search;
+                }
+            }
+            return boof;
+        }
+    }
+
+    void add_node(int a)
+    {
+        bin_node* temp = search(a);
+        bin_node* new_node = new bin_node;
+        if (top == NULL)
+            top = new_node;
+        new_node->data = a;
+        new_node->left = NULL;
+        new_node->right = NULL;
+        if (a < temp->data)
+            temp->left = new_node;
+        else
+            temp->right = new_node;
+    }
+};
+
+int main()
+{
+    setlocale(LC_ALL, "");
+    bin_tree tree;
+    int act, numb;
+    do
+    {
+        system("cls");
+        cout << "Какое действие сделать:\nДобавление - 1\nПоиск - 2\nОбход - 3\n";
+        cin >> act;
+        switch (act)
+        {
+        case 1:
+            system("cls");
+            cout << "Введите значение элемента: ";
+            cin >> numb;
+            tree.add_node(numb);
+            break;
+        case 2:
+            system("cls");
+            cout << "Введите значение которое ищите: ";
+            cin >> numb;
+            cout << "Адрес введенного элемента: " << tree.search(numb) << "\n";
+            break;
+        case 3:
+            system("cls");
+            tree.print();
+            cout << "\n";
+            break;
+        }
+        system("pause");
+    } while (true);
+    return 0;
+}
+        
