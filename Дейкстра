@@ -1,0 +1,116 @@
+#include<iostream>
+#include<fstream>
+#include<climits>
+using namespace std ;
+
+/*
+Матрицы для проверки:
+
+    0     7     9     0     0    14 
+    7     0    10    15     0     0 
+    9    10     0    11     0     2 
+    0    15    11     0     6     0 
+    0     0     0     6     0     9 
+   14     0     2     0     9     0 
+   
+    0 4 0 0 0 0 0 8 0 
+    4 0 8 0 0 0 0 11 0
+    0 8 0 7 0 4 0 0 2
+    0 0 7 0 9 14 0 0 0
+    0 0 0 9 0 10 0 0 0
+    0 0 4 14 10 0 2 0 0
+    0 0 0 0 0 2 0 1 6 
+    8 11 0 0 0 0 1 0 7
+    0 0 2 0 0 0 6 7 0
+*/
+int main() { 
+    int n; //кол-во вершин
+    cout<<"Введите количество вершин: " ; 
+    cin>>n ; 
+    int cost[n][n]; //матрица связей 
+
+    
+    cout<<"Введите матрицу: \n" ; 
+    for(int i = 0 ;i < n ; i++){
+        for(int j = 0 ; j< n ; j++) cin>>cost[i][j] ; 
+    }
+    
+    /*
+    ifstream reading("read.txt");//создаем поток для чтения //Если нужно считать матрицу с файла
+		if (reading) {//если открылся
+		for(int i = 0 ;i < n ; i++){
+            for(int j = 0 ; j< n ; j++) 
+                reading >>cost[i][j];
+        }
+	} else cout<< "Ошибка при открытии файла"<<endl;
+		reading.close();
+    */
+    
+    int src ; 
+    cout<<"\nВведите вершину, кратчайшие пути для которой хотите найти : " ;  cin>>src ;
+
+    int par[n] = {};
+    int dist[n] ; //массив расстояний
+    bool visited[n] = {0} ;//массив для отслеживания посещенных вершин
+    for(int i = 0; i < n; i++){
+        dist[i] = INT_MAX;
+    }
+    dist[src] = 0;
+
+
+    for(int g = 0  ; g<n ; g++){ //проходим по всем вершинам
+        int key;  //вычисление миннимального значения расстояния
+        int min = INT_MAX; 
+        for(int i=0;i < n ; i++){//пройдем по всем вершинам и получим их расстояния
+            if(!visited[i] && dist[i]<min){ //меньше ли расстояние до текущей вершины чем наше минимальное значение и не посещен ли узел
+                min = dist[i] ; //обновляем минимальное расстояние на меньшее
+                key = i ;  //обновляем ближаюшую вершину
+        }
+    }
+        int u = key  ;  //на каждой итерации мы получаем ближайшую непосещенную вершину
+        visited[u] = true ; //отмечаем эту вершину как посещенную
+        //cout<< " min = " << u <<endl; 
+        for(int v =0 ; v< n ;v++){ 
+            if(!visited[v] && (dist[u]+cost[u][v]) <  dist[v] && cost[u][v]!=0)
+            {
+                par[v] = u ; 
+                dist[v] = dist[u] + cost[u][v] ; 
+            }
+        }
+    }
+    
+     for(int i =0 ;i < n ;i++){ //Выод результата алгоритма
+       int temp = par[i] ; 
+       cout<<"Проход вершин:"<<endl;
+       cout<<i << " <- " ;
+       while(temp!=0)
+       {
+           cout<< temp << " <- " ;
+           temp = par[temp] ; 
+       }
+       cout<<endl; 
+       cout<<"Distance " <<"to "<<i<<" = " <<dist[i] ; 
+       cout<<endl; 
+   }
+
+   	/*ofstream record("write.txt", ios::out);//поток для записи //если нужно записать результат в файл
+		if (record) {
+		    for(int i =0 ;i < n ;i++){ //Выод результата алгоритма
+               int temp = par[i] ; 
+               record <<"Проход вершин:"<<endl;
+              	record <<i << " <- " ;
+               while(temp!=0)
+               {
+                   	record << temp << " <- " ;
+                   temp = par[temp] ; 
+               }
+              	record <<endl; 
+              record <<"Вес пути " <<"to "<<i<<" = " <<dist[i] ; 
+              	record<<endl; 
+           }
+		}
+		else cout<< "Ошибка при открытии файла";
+		record.close();
+		*/
+   
+}
