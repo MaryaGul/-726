@@ -1,0 +1,160 @@
+#include <iostream>
+using namespace std;
+const int N = 10; //кол-во вершин
+int MATRIX[N][N]
+{
+{0, 1, 1, 0, 1, 1, 1, 0, 1, 0},
+{1, 0, 1, 1, 0, 1, 0, 1, 0, 1},
+{1, 1, 0, 0, 1, 0, 1, 1, 1, 0},
+{0, 1, 0, 0, 1, 1, 0, 1, 0, 1},
+{1, 0, 1, 1, 0, 1, 1, 0, 1, 0},
+{1, 1, 0, 1, 1, 0, 1, 1, 0, 1},
+{1, 0, 1, 0, 1, 1, 0, 0, 1, 1},
+{0, 1, 1, 1, 0, 1, 0, 0, 1, 0},
+{1, 0, 1, 0, 1, 0, 1, 1, 0, 1},
+{0, 1, 0, 1, 0, 1, 1, 0, 1, 0}
+};
+class stack //стек
+{
+private:
+    int* arr;
+    int first;
+    int matrix[N][N] = {}; //массив смежности
+    bool visited[N];
+    int ways[N]; //смежные
+    int count;
+    int start, end;
+    int current = 0;
+public:
+    void create(int str, int en, int mat[N][N])
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                matrix[i][j] = mat[i][j];
+            }
+        }
+        start = str;
+        end = en;
+        for (int i = 0; i < N; i++)
+        {
+            visited[i] = 0;
+        }
+        first = -1; //вершина пуста
+        arr = new int[100];
+        count = 0;
+    }
+    void push(int a) //добавление в конец
+    {
+        first++;
+        arr[first] = a;
+    }
+    void pop() //удаление начала
+    {
+        current = arr[first];
+        first--; }
+    void way() //функция обхода
+    {
+        visited[start] = 1;
+        ways[start] = -1;
+        push(start);
+        while (first != -1)
+        {
+            pop();
+            visited[current] = 1;
+            for (int i = N - 1; i >= 0; i--)
+            {
+                if (visited[i] == 0 && matrix[current][i] == 1)
+                {
+                    push(i);
+                    ways[i] = current;
+                }
+            }
+        }
+    }
+    void show_way()
+    {
+                  cout << "\nПуть с конца до начала (стэк): \n";
+                  cout << end << " ";
+                  end = ways[end];
+                  while (end != start)
+                  {
+                        cout << end << " ";
+                        end = ways[end];
+                  }
+                  cout << start;
+           }
+    };
+//Рекурсивная
+class DFS
+{
+private:
+    int matrix[N][N] = {};
+    bool visited[N];
+    int ways[N];
+    int count;
+    int start, end;
+public:
+    void create(int str, int en, int mat[N][N])
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                matrix[i][j] = mat[i][j];
+            }
+        }
+        start = str;
+        end = en;
+        for (int i = 0; i < N; i++)
+        {
+            visited[i] = 0;
+        }
+        count = 0;
+        visited[start] = 1;
+        ways[start] = -1;
+    }
+    void way(int curr) //функция обхода
+    {
+        visited[curr] = 1;
+        for (int i = 0; i < N; i++)
+        {
+            if (visited[i] == 0 && matrix[curr][i] == 1)
+            {
+                ways[i] = curr; //добавление в массив родительских
+                way(i); //рекурсивный вызов
+            }
+        } }
+    void show_way()
+    {
+        cout << "\nПуть с конца до начала (рекурсия): \n";
+        cout << end << " ";
+        end = ways[end];
+        while (end != start)
+        {
+            cout << end << " ";
+            end = ways[end];
+        }
+        cout << start;
+    }
+};
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    stack stk;
+    DFS req;
+    int s, e;
+    cout << endl;
+    cout << "Начало: ";
+    cin >> s;
+    cout << "Конец: ";
+    cin >> e;
+    stk.create(s, e, MATRIX);
+    stk.way();
+    stk.show_way();
+    cout << endl;
+ //   req.create(s, e, MATRIX);
+  //  req.way(s);
+   // req.show_way();
+    return 0;}
